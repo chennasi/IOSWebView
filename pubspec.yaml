@@ -1,5 +1,5 @@
 name: ios_webview
-description: A new Flutter project.
+description: A new Flutter webview project.
 publish_to: 'none'
 version: 1.0.0+1
 
@@ -9,7 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_inappwebview: ^6.0.0 # Standard WebView plugin
+  flutter_inappwebview: ^6.0.0 # The tool that displays your website
 
 dev_dependencies:
   flutter_test:
