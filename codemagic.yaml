@@ -1,20 +1,24 @@
 workflows:
-  ios-webview-workflow:
-    name: iOS WebView Build
-    working_directory: IOSWebView
+  ios-native-webview:
+    name: Native iOS WebView Build
     instance_type: mac_mini_m2
     max_build_duration: 60
     environment:
-      flutter: stable
       xcode: latest
+      vars:
+        XCODE_PROJECT: "IOSWebView.xcodeproj"
+        XCODE_SCHEME: "IOSWebView"
     scripts:
-      - name: Get Flutter packages
-        script: flutter pub get
-      - name: Build iOS App
+      - name: Build native iOS app
         script: | 
-          flutter build ios --release --no-codesign
+          # Build for simulator/testing without codesigning
+          xcodebuild build \
+            -project "$XCODE_PROJECT" \
+            -scheme "$XCODE_SCHEME" \
+            -sdk iphonesimulator \
+            CODE_SIGNING_ALLOWED=NO
     artifacts:
-      - build/ios/iphoneos/*.app
+      - build/Build/Products/Debug-iphonesimulator/*.app
     publishing:
       email:
         recipients:
