@@ -23,7 +23,7 @@ class _WebViewPageState extends State<WebViewPage> {
       body: SafeArea(
         child: InAppWebView(
           initialUrlRequest: URLRequest(
-            url: WebUri("https://sb.shiprist.com"), // Change this URL
+            url: WebUri("https://www.your-website-url.com"), 
           ),
         ),
       ),
